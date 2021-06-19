@@ -5,7 +5,7 @@
   <ul>
     <li v-for="item in todos" :key="item.ID"><button @click="hapus(item.ID)">X</button>{{ item.TODO }}</li>
   </ul>
-  <input type="text" v-model="myText"/>
+  <input v-model="myText"/>
   <button @click="tambahkan">Click Me</button>
 </div>
 </template>
@@ -28,8 +28,8 @@ export default{
       })
   },
   methods: {
-    tambah : function(){
-      let newItem = {deskripsi : this.myText}
+    tambahkan : function(){
+      let newItem = {desc : this.myText}
       axios
         .post('http://localhost:3000/todo', newItem)
         .then(()=>{
